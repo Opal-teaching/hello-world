@@ -35,19 +35,21 @@ This may be a lot of new material for you to process. To help, here are some add
   - [AngularJS Documentation](https://docs.angularjs.org/api)
   - [OnsenUI Documentation](https://onsen.io/v1/guide.html)
   - [Style Guide for AngularJS](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md)
-    <br>Please use this style guide when writing your AngularJS code. It makes the code clean, consistent, and easy to use 
+    <br>
+    Please use this style guide when writing your AngularJS code. It makes the code clean, consistent, and easy to use 
     for the people who will follow you.
+  - [Webpack Documentation](https://webpack.js.org/concepts/)
 
 ## Instructions
 
-The instructions below will guide you through the first part of this assignment.
-After following this mini-tutorial, you should have an idea of what the config files do in our Angular application, how you'd go 
+The instructions below will guide you through the process of creating a simple "hello world" application from scratch.
+After following this mini-tutorial, you should have an idea of what the config files do in an Angular application, how you'd go 
 about creating them and how to create a basic web app, i.e. Hello World the Opal front-end way :)
 
 1.  Make sure you're comfortable using the command line terminal in your chosen operating system.
     You should also have access to an IDE of your choice, for example, [WebStorm](https://www.jetbrains.com/webstorm/), 
-    which is free for students. In addition, if you're using Mac, precede all npm commands with `sudo` 
-    (e.g. `sudo npm install ...`).
+    which is free for students. In addition, if you're using a Mac without root access, you may need to precede all npm commands 
+    with `sudo` (e.g. `sudo npm install ...`).
     
 2.  Install the latest version of [NodeJS](https://nodejs.org/en/download/).
     Verify that Node and its package manager, npm, were correctly installed by running `node -v` and `npm -v` in a terminal.
@@ -55,57 +57,61 @@ about creating them and how to create a basic web app, i.e. Hello World the Opal
     
 3.  Create a new directory for this assignment and navigate to it in a terminal. Also open the folder in an IDE.
     
-4.  Run `npm init`. This will initialize your project by creating a config file called package.json.
+4.  Run the following command:
+    ```
+    npm init
+    ```
+    This will initialize your project by creating a config file called `package.json`.
     It will ask you common questions relating to your project's set up, such as asking you to provide a description, 
     version number and name for your project.
     You can press enter without typing an answer to leave the default (shown in parentheses) for any given line.
     Do this for all lines except author (write your name) and description (write `The first assignment of Opal bootcamp.`).
-    <br>
-    After completing this setup, a package.json file will be created in your root project folder.
+    <br><br>
+    After completing this setup, a `package.json` file will be created in your root project folder.
     Open it and see what was added. Here, you can change anything you answered during `npm init`.
-    In addition to giving some background information on your project, package.json will be used by npm to track your project's
+    In addition to giving some background information on your project, `package.json` will be used by npm to track your project's
     dependencies. As we install dependencies, you will see them automatically added to this file.
     
-5.  Install webpack (and webpack's dev server and command line) as development dependencies for your project (warnings are 
+5.  Install webpack, and webpack's dev server and command line, as development dependencies for your project (warnings are 
     fine, as long as there are no errors): 
-    `npm install webpack webpack-dev-server webpack-cli --save-dev`.
-    <br>
+    ```
+    npm install webpack webpack-dev-server webpack-cli --save-dev
+    ```
     [Webpack](https://webpack.js.org/concepts/) is a static module bundler for JavaScript applications. We will be using 
     webpack-dev-server to build and serve our application in a browser.
-    <br>
-    The `--save-dev` flag instructs npm to add the installed dependencies to package.json under "devDependencies".
+    <br><br>
+    The `--save-dev` flag instructs npm to add the installed dependencies to `package.json` under "devDependencies".
     These dependencies are needed during development, but not when building a production version of the app.
-    <br>
-    After running this command, open package.json. You will see that these three new dependencies and their version numbers
-    have been added. The command will also have created a node_modules folder, which will contain the installed dependencies, 
+    <br><br>
+    After running this command, open `package.json`. You will see that these three new dependencies and their version numbers
+    have been added. The command will also have created a `node_modules` folder, which will contain the installed dependencies, 
     and a [package-lock.json](https://docs.npmjs.com/configuring-npm/package-lock-json.html) file, which is a trace of everything 
-    that was installed. Both node_modules and package-lock.json will contain many more packages than the three you installed. 
-    This is because npm installed all of those packages' dependencies as well.
+    that was installed. Both `node_modules` and `package-lock.json` will contain many more packages than the three you installed. 
+    This is because npm installs all of those packages' dependencies as well.
     
 6.  Next, it's time to install our two major frameworks as front-end dependencies:
     ```
     npm install angular@1.6.10 --save
     npm install onsenui@1.3.17 --save
     ```
-    <br>
     Here, the `--save` flag instructs npm to add the installed dependencies to package.json as actual project dependencies 
-    (under "dependencies"). Note than when installing a new dependency using npm, __you should always use the --save-dev or 
-    --save flag__. If you don't, anyone who tries to install your project using package.json will be missing some of the 
+    (under "dependencies"). Note than when installing a new dependency using npm, **you should always use the --save-dev or 
+    --save flag**. If you don't, anyone who tries to install your project using `package.json` will be missing some of the 
     dependencies they need.
-    <br>
+    <br><br>
     The `@` symbol is used to specify a specific version to install. In the case of Angular and OnsenUI, newer versions have been 
     released that completely change their usage and syntax. Since we want to use the same older versions as Opal, 
     we must specify which older versions to install.
-    <br>
+    <br><br>
     OnsenUI and AngularJS are the two main JavaScript dependencies we use in the app.
-     - AngularJS provides a framework for the logic of a web-app that builds on top of the __MVC__ design pattern. 
+     - AngularJS provides a framework for the logic of a web-app that builds on top of the **MVC** design pattern. 
        Here is a small introduction: https://docs.angularjs.org/guide/concepts.
      - OnsenUI is a CSS/JavaScript library that provides out-of-the-box components that mimic a mobile user interface. 
        This allows our web-app to look and feel like a mobile app.
        Look through the start page on OnsenUI https://onsen.io/v1/guide.html,
        Please note that we will be working with version 1 of this framework. When you're going through the documentation,
        make sure you're consulting the right version.
-     <br>
+     <br><br>
      After running this command, open package.json. You'll see that it was updated with a new dependencies section that lists both
      Angular and OnsenUI.
     
@@ -124,12 +130,11 @@ about creating them and how to create a basic web app, i.e. Hello World the Opal
     </html>
     
     ```
-    <br>
     
 8.  Then, under `src`, create a folder called `js`, and in it, a file `app.js` (its full path will be `src/js/app.js`). 
     Also create a folder in `src` called `views`, and create a file in it called `hello-world.html`. We will add to these later.
     
-9.  Now, we'll set up webpack-dev-server to serve the application. In the root of your project folder (alongside package.json),
+9.  Now, we'll set up webpack-dev-server to serve the application. In the root of your project folder (alongside `package.json`),
     create a file called `webpack.config.js`. This file will contain all the configurations we need to use webpack.
     Add the following content:
     ```
@@ -210,40 +215,38 @@ about creating them and how to create a basic web app, i.e. Hello World the Opal
     };
     
     ```
-    <br>
     Here's an explanation of what each part of this config file is used for:
-      - entry: used to specify the entry point js files for our application. We'll add more to this later.
-      - devtool: specifies which method to use to generate source maps, which allow us to debug minified code.
-      - mode: affects webpack's optimizations. For now, we're only concerned with using development mode.
-      - devServer: these are the configurations for webpack-dev-server, which we'll use to launch the app.
-        Of particular interest here are contentBase, which should match output path, watchContentBase and liveReload, 
-        which allows the browser to reload our changes to the source files without having to relaunch webpack-dev-server,
-        and port, which can be changes to a different value if the one chosen is already in use.
-      - output: the output folder for the built application. Webpack-dev-server only builds in memory, so you won't see 
-        the `www` be created, but webpack can also be used to build an app bundle to this folder directly.
-      - module.rules: this section contains rules on how to load each type of file while serving the app.
-      - plugins: we're using two plugins: CopyPlugin to make the views (which will be added later) accessible in
-        the built app, and HtmlWebpackPlugin to serve our html files.
+      - `entry`: used to specify the entry point js files for our application. We'll add more to this later.
+      - `devtool`: specifies which method to use to generate source maps, which allow us to debug minified code.
+      - `mode`: affects webpack's optimizations. For now, we're only concerned with using `development` mode.
+      - `devServer`: these are the configurations for webpack-dev-server, which we'll use to launch the app.
+        Of particular interest here are `contentBase`, which should match `output.path`, `watchContentBase` and `liveReload`, 
+        which allow the browser to reload changes to the source files without having to relaunch webpack-dev-server,
+        and `port`, which can be changed to a different value if the one chosen is already in use.
+      - `output`: the output folder for the application build. Webpack-dev-server only builds in memory, so you won't see 
+        `www` be created, but webpack can also be used to build an app bundle to this folder directly.
+      - `module.rules`: this section contains rules on how to load each type of file while serving the app.
+      - `plugins`: we're using two plugins: CopyPlugin to make the views (which will be added later) accessible in
+        the served app, and HtmlWebpackPlugin to serve our html files.
 
 10. Before we can serve the app using webpack-dev-server, we'll need to install all the dependencies referenced in the 
-    webpack.config.js file:
+    `webpack.config.js` file:
     ```
     npm install copy-webpack-plugin html-webpack-plugin --save-dev
     npm install css-loader exports-loader file-loader imports-loader raw-loader style-loader --save-dev
     npm install @babel/core babel-loader --save-dev
     ```
-    <br>
-    The first line installs the required plugins; the second, the loaders used in modules.rules; and the third, babel, 
+    The first line installs the required plugins; the second, the loaders used in `modules.rules`; and the third, babel, 
     which is used to interpret .js files.
 
-11. In addition, to run webpack, we'll set up a short npm script which will act as a shortcut. 
+11. In addition, to run webpack, we'll set up a short npm script that we can use as a shortcut. 
     Add the `start` script to package.json:
-   ```
-   "scripts": {
-       "start": "webpack-dev-server --open --watch --progress --colors",
-       "test": "echo \"Error: no test specified\" && exit 1"
-   },
-   ```
+    ```
+    "scripts": {
+        "start": "webpack-dev-server --open --watch --progress --colors",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    ```
 
 12. Next, try out your webpack setup by running `npm run start` (this will launch the script you've just added). 
     A browser window should open (this tutorial will use Chrome as an example), and you should see `This is index.html`. 
@@ -263,10 +266,10 @@ about creating them and how to create a basic web app, i.e. Hello World the Opal
     ```
     Here, we have told Angular to start our HelloWorld application from the body tag of our html tree.
     We have also told Angular to hide placeholders while they load their values using ng-cloak.
-    <br>
-    The index.html page is the only page that will be loaded in the application. Angular will take care of dynamically 
+    <br><br>
+    The `index.html` page is the only page that will be loaded in the application. Angular will take care of dynamically 
     swapping dependencies in and out within that page. It will also control state via Angular directives which start with `ng`.
-    <br>
+    <br><br>
     Second, we instantiate the module, by adding the following to `app.js`:
     ```
     import angular from "angular";
@@ -295,19 +298,18 @@ about creating them and how to create a basic web app, i.e. Hello World the Opal
 
 15. We are now ready to add logic to the app. We will create an onsen navigator, an onsen page, and finally add 
     some logic to display "hello world".
-
-16. In the index.html file, add an onsen navigator between the <body> tags, and remove the "This is index.html" header:
+    <br><br>
+    In the `index.html` file, add an onsen navigator between the <body> tags, and remove the "This is index.html" header:
     ```
     <body ng-app="HelloWorld" ng-cloak>
         <ons-navigator var="navi" page="./views/hello-world.html"></ons-navigator>
     </body>
     ```
-    <br>
     This navigator instantiates the global variable `navi`, which will allow you to add and remove pages.
     The url in the page attribute points to the root page for the navigator. The navigator creates a stack from which 
     you can push and pop new pages. See [page navigation](https://onsen.io/v1/guide.html#page-navigation) for details.
 
-17. Open the file called `hello-world.html` in the `views` folder. This will
+16. Open the file called `hello-world.html` in the `views` folder. This will
     be the initial view displayed by the navigator. To this view, add the following code:
     ```
     <ons-page ng-controller="HelloWorldController as vm">
@@ -324,7 +326,7 @@ about creating them and how to create a basic web app, i.e. Hello World the Opal
     This html page creates and ons-page component, which is the type of component that can be pushed onto an onsen navigator. 
     The ng-controller tag indicates the controller use for this view.
 
-18. Create a new folder called `controllers` inside `js`. Create a new file called `helloWorldController.js` in this folder 
+17. Create a new folder called `controllers` inside `js`. Create a new file called `helloWorldController.js` in this folder 
     (its full path will be `src/js/controllers/helloWorldController.js`).
     Add the following contents to this file:
     ```
@@ -345,12 +347,11 @@ about creating them and how to create a basic web app, i.e. Hello World the Opal
     })();
     
     ```
-    <br>
     Notice the `(function(){})();`. This will encapsulate the code as to not let variables escape from its scope.
     Declaring variables in a JavaScript file without function encapsulation risks causing collisions
     between variables in different files in the project.
 
-19. This controller is referenced by the hello-world view, but it needs to be linked to the rest of the application
+18. This controller is referenced by the hello-world view, but it needs to be linked to the rest of the application
     via webpack in order to be correctly loaded on launch. To do this, create a new file `src/js/app.controllers.js`:
     ```
     import "./controllers/helloWorldController.js";
@@ -364,14 +365,14 @@ about creating them and how to create a basic web app, i.e. Hello World the Opal
     ];
     ```
 
-20. If you've left webpack running, it will have reloaded for you every time you saved new changes. 
+19. If you've left webpack running, it will have reloaded for you every time you saved new changes. 
     However, it will not reload changes to `webpack.config.js`. Since you've made changes to this file, you'll need to 
     restart webpack. Do this by cancelling the running process and re-running `npm run start`.
-    <br>
+    <br><br>
     Check that the app still runs correctly and there are no errors in the console. Now, you should see only the 
     navigation bar, since this is the only visual component in the hello-world view.
 
-21. Finally, it's time to display "Hello World". In `helloWorldController.js`, replace the TODO line with the following:
+20. Finally, it's time to display "Hello World". In `helloWorldController.js`, replace the TODO line with the following:
     ```
     vm.hello = "Hello World!"; // Declare a controller variable than can be used in its view
     ```
@@ -379,13 +380,18 @@ about creating them and how to create a basic web app, i.e. Hello World the Opal
     ```
     <h1>{{vm.hello}}</h1>
     ```
-    <br>
-    In the view, vm refers to the controller `as vm`, and `hello` is the variable defined in this controller. The curly brackets 
+    In the view, vm refers to the controller "`as vm`", and `hello` is the variable defined in this controller. The curly brackets 
     are used to express the contents of the variable instead of printing `vm.hello` in plain text to the screen.
-    <br>
-    Since you've only made changes to project files (not `webpack.config.js`), webpack will have updated the running instance 
+    <br><br>
+    Since you've only made changes to project files (not to `webpack.config.js`), webpack will have updated the running instance 
     automatically. Look at your browser and check that "Hello World!" is now visible.
 
 __Success__!!! You have now gone through the basic steps to get an AngularJS app running with Opal's front-end technology stack!
 
-If you have any issues with the above instructions, contact the bootcamp runner.
+If you have any issues with the above instructions, please contact the bootcamp runner.
+
+## Disclaimer
+
+**Please note**: this assignment involves installing the latest versions of certain npm packages directly from the command line. 
+It's possible that since these instructions were written, breaking changes were introduced in newer package versions. 
+To view the list of exact package versions used in this tutorial, please consult the solution repository associated with this exercise.
