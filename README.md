@@ -111,11 +111,12 @@ about creating them and how to create a basic web app, i.e. Hello World the Opal
        Look through the start page on OnsenUI https://onsen.io/v1/guide.html,
        Please note that we will be working with version 1 of this framework. When you're going through the documentation,
        make sure you're consulting the right version.
-     <br><br>
+     
      After running this command, open package.json. You'll see that it was updated with a new dependencies section that lists both
      Angular and OnsenUI.
     
-7.  Next, create a folder called `src`. In it, create an `index.html` file which will be the starting point of our web application.
+7.  Next, create a folder called `src` in the root folder of your project. In it, create an `index.html` file which will be 
+    the starting point of our web application.
     Add the following code to this file:
     ```
     <!DOCTYPE html>
@@ -131,7 +132,7 @@ about creating them and how to create a basic web app, i.e. Hello World the Opal
     
     ```
     
-8.  Then, under `src`, create a folder called `js`, and in it, a file `app.js` (its full path will be `src/js/app.js`). 
+8.  Then, inside `src`, create a folder called `js`, and in it, a file `app.js` (its full path will be `src/js/app.js`). 
     Also create a folder in `src` called `views`, and create a file in it called `hello-world.html`. We will add to these later.
     
 9.  Now, we'll set up webpack-dev-server to serve the application. In the root of your project folder (alongside `package.json`),
@@ -220,9 +221,9 @@ about creating them and how to create a basic web app, i.e. Hello World the Opal
       - `devtool`: specifies which method to use to generate source maps, which allow us to debug minified code.
       - `mode`: affects webpack's optimizations. For now, we're only concerned with using `development` mode.
       - `devServer`: these are the configurations for webpack-dev-server, which we'll use to launch the app.
-        Of particular interest here are `contentBase`, which should match `output.path`, `watchContentBase` and `liveReload`, 
+        Of particular interest here are `contentBase` (which should match `output.path`), `watchContentBase` and `liveReload`, 
         which allow the browser to reload changes to the source files without having to relaunch webpack-dev-server,
-        and `port`, which can be changed to a different value if the one chosen is already in use.
+        and finally `port`, which can be changed to a different value if the one chosen is already in use.
       - `output`: the output folder for the application build. Webpack-dev-server only builds in memory, so you won't see 
         `www` be created, but webpack can also be used to build an app bundle to this folder directly.
       - `module.rules`: this section contains rules on how to load each type of file while serving the app.
@@ -253,12 +254,12 @@ about creating them and how to create a basic web app, i.e. Hello World the Opal
     To test for errors, check the console by inspecting the page and choosing `console` on the top bar of the browser. 
     Also disable the cache by going into the `network` tab of the debugging tools and 
     [selecting](https://www.technipages.com/google-chrome-how-to-completely-disable-cache)
-    the `disable cache` box.
+    the `disable cache` box. If you get an error about `favicon.ico`, it's fine.
 
 13. At this point, you've successfully set up a simple html page to run locally in your browser. However, this
     setup hasn't made use of Angular or OnsenUI yet. Now it's time to start building the app using Angular. An Angular app is 
     bootstrapped by the module config function. To make use of this, we need to add the following.
-    First, we add an angular directive (ng-app) to `index.html`'s body tag to tell Angular where to start nesting the application.
+    First, add an angular directive (ng-app) to `index.html`'s body tag to tell Angular where to start nesting the application.
     ```
     <body ng-app="HelloWorld" ng-cloak>
         ...
@@ -270,7 +271,7 @@ about creating them and how to create a basic web app, i.e. Hello World the Opal
     The `index.html` page is the only page that will be loaded in the application. Angular will take care of dynamically 
     swapping dependencies in and out within that page. It will also control state via Angular directives which start with `ng`.
     <br><br>
-    Second, we instantiate the module, by adding the following to `app.js`:
+    Second, instantiate the module, by adding the following to `app.js`:
     ```
     import angular from "angular";
     import "onsenui/js/onsenui";
