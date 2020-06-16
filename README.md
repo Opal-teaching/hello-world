@@ -234,7 +234,7 @@ about creating them and how to create a basic web app, i.e. Hello World the Opal
     `webpack.config.js` file:
     ```
     npm install copy-webpack-plugin html-webpack-plugin --save-dev
-    npm install css-loader exports-loader file-loader imports-loader raw-loader style-loader --save-dev
+    npm install css-loader exports-loader@0.7.0 file-loader imports-loader raw-loader style-loader --save-dev
     npm install @babel/core babel-loader --save-dev
     ```
     The first line installs the required plugins; the second, the loaders used in `modules.rules`; and the third, babel, 
