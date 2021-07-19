@@ -75,13 +75,19 @@ about creating them and how to create a basic web app, i.e. Hello World the Opal
 5.  Install webpack, and webpack's dev server and command line, as development dependencies for your project (warnings are 
     fine, as long as there are no errors): 
     ```
-    npm install webpack webpack-dev-server webpack-cli --save-dev
+    npm install webpack@4.42.1 webpack-dev-server@3.11.2 webpack-cli@3.3.11 --save-dev
     ```
     [Webpack](https://webpack.js.org/concepts/) is a static module bundler for JavaScript applications. We will be using 
     webpack-dev-server to build and serve our application in a browser.
     <br><br>
     The `--save-dev` flag instructs npm to add the installed dependencies to `package.json` under "devDependencies".
     These dependencies are needed during development, but not when building a production version of the app.
+    <br><br>
+    The `@` symbol is used to specify a specific version to install. When creating a new project from scratch, you 
+    generally won't need to specify version numbers (for example, `npm install webpack --save-dev` will install the latest 
+    version). However, this "hello world" project uses specific version of all dependencies to ensure that it still 
+    runs correctly years from now (since sometimes the latest version of a dependency can introduce new requirements that aren't 
+    covered in this guide).
     <br><br>
     After running this command, open `package.json`. You will see that these three new dependencies and their version numbers
     have been added. The command will also have created a `node_modules` folder, which will contain the installed dependencies, 
@@ -91,7 +97,7 @@ about creating them and how to create a basic web app, i.e. Hello World the Opal
     
 6.  Next, it's time to install our two major frameworks as front-end dependencies:
     ```
-    npm install angular@1.6.10 --save
+    npm install angular@1.8.2 --save
     npm install onsenui@1.3.17 --save
     ```
     Here, the `--save` flag instructs npm to add the installed dependencies to package.json as actual project dependencies 
@@ -99,9 +105,8 @@ about creating them and how to create a basic web app, i.e. Hello World the Opal
     --save flag**. If you don't, anyone who tries to install your project using `package.json` will be missing some of the 
     dependencies they need.
     <br><br>
-    The `@` symbol is used to specify a specific version to install. In the case of Angular and OnsenUI, newer versions have been 
-    released that completely change their usage and syntax. Since we want to use the same older versions as Opal, 
-    we must specify which older versions to install.
+    In the case of Angular and OnsenUI, newer versions have been released that completely change their usage and syntax. 
+    Since we want to use the same older versions as Opal, we must specify which older versions to install.
     <br><br>
     OnsenUI and AngularJS are the two main JavaScript dependencies we use in the app.
      - AngularJS provides a framework for the logic of a web-app that builds on top of the **MVC** design pattern. 
@@ -233,9 +238,9 @@ about creating them and how to create a basic web app, i.e. Hello World the Opal
 10. Before we can serve the app using webpack-dev-server, we'll need to install all the dependencies referenced in the 
     `webpack.config.js` file:
     ```
-    npm install copy-webpack-plugin html-webpack-plugin --save-dev
-    npm install css-loader exports-loader@0.7.0 file-loader imports-loader raw-loader style-loader --save-dev
-    npm install @babel/core babel-loader --save-dev
+    npm install copy-webpack-plugin@6.4.0 html-webpack-plugin@3.2.0 --save-dev
+    npm install css-loader@5.2.6 exports-loader@0.7.0 file-loader@5.1.0 imports-loader@0.8.0 raw-loader@4.0.0 style-loader@1.1.3 --save-dev
+    npm install @babel/core@7.9.0 babel-loader@8.1.0 --save-dev
     ```
     The first line installs the required plugins; the second, the loaders used in `modules.rules`; and the third, babel, 
     which is used to interpret .js files.
