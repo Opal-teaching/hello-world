@@ -395,9 +395,3 @@ about creating them and how to create a basic web app, i.e. Hello World the Opal
 __Success__!!! You have now gone through the basic steps to get an AngularJS app running with Opal's front-end technology stack!
 
 If you have any issues with the above instructions, please contact the bootcamp runner.
-
-## Disclaimer
-
-**Please note**: this assignment involves installing the latest versions of certain npm packages directly from the command line. 
-It's possible that since these instructions were written, breaking changes were introduced in newer package versions. 
-To view the list of exact package versions used in this tutorial, please consult the solution repository associated with this exercise.
